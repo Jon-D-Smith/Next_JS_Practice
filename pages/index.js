@@ -6,6 +6,11 @@ import Footer from '../comps/Footer'
 import Link from 'next/link'
 export default function Home() {
   return (
+    <>
+    <Head>
+      <title>Ninja List | Home</title>
+      <meta name="keywords" content="Ninjas" />
+    </Head>
    <div className={styles.container}>
      <h1>Hello World</h1>
      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam corrupti illum ipsum itaque beatae amet dicta modi omnis neque? Dolores illo molestias itaque voluptate molestiae sequi reiciendis beatae ducimus minima!</p>
@@ -14,5 +19,6 @@ export default function Home() {
      <a>See Nina Listing</a>
      </Link>
    </div>
+   </>
   )
 }
