@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router'
-const Profile = ({id}) => {
+const Profile = () => {
     const router = useRouter()
-  const { pid } = router.query
+  const { id } = router.query
 
-  return <p>Profile for: {pid}</p>
+  return <p>Profile for: {id}</p>
 }
  
 export default Profile;
