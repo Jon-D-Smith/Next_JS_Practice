@@ -1,12 +1,16 @@
 import TextField from '@material-ui/core/TextField';
 import { useState } from 'react';
 import Buttons from '../comps/Buttons';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import styles from '../styles/Form.module.css'
 
 const Form = () => {
     const [adjective, setAdjective] = useState('')
     const [story, setStory] = useState('')
     const [isVisible, setIsVisible] = useState(false)
-    const [choice, setChoice] = useState("1")
+    const [choice, setChoice] = useState(1)
     const stories = [
         `There once was a boy with a ${adjective} balloon`,
         `A ${adjective} frisbee came to life`,
@@ -24,20 +28,34 @@ const Form = () => {
     const handleSubmit =(e) => {
         e.preventDefault()
         setIsVisible(true)
-        setStory(stories[parseInt(choice)])
+        setStory(stories[choice])
     }
     return ( 
         <>
-    <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-      <TextField label="Adjective" variant="filled" name="adjective"  value={adjective} onChange={handleAdjectiveChange} />
-      <select onChange={handleChoiceChange}>
-          <option value="0">1</option>
-          <option value="1">2</option>
-          <option value="2">3</option>
-      </select>
-      <Buttons text='Generate Story' variant="contained" color="primary" handleClick={handleSubmit} />
+    <form noValidate autoComplete="off" onSubmit={handleSubmit} className={styles.container}>
+    <InputLabel id="adjective-select" >Adjective</InputLabel>
+      <TextField labelId="adjective-select" label="Adjective" variant="filled" name="adjective"  value={adjective} onChange={handleAdjectiveChange} className={styles.input1}/>
+      <InputLabel id="choice-select" >Story</InputLabel>
+      <Select
+          labelId="choice-select"
+          id="choice-selector"
+          value={choice}
+          onChange={handleChoiceChange}
+          className={styles.input1}
+        >
+          <MenuItem value={0}>1</MenuItem>
+          <MenuItem value={1}>2</MenuItem>
+          <MenuItem value={2}>3</MenuItem>
+        </Select>
+
+      <br />
+      <Buttons text='Generate Story' variant="contained" color="primary" className={styles.inputButton} handleClick={handleSubmit} />
     </form>
-    {isVisible && <p>{story}</p>}
+    <div>
+        <h1>Your story:</h1>
+    {isVisible && <p className={styles.red}>{story}</p>}
+    </div>
+    
     </>
      );
 }
