@@ -17,6 +17,7 @@ export default function Home() {
      <p>Using this project to test Next</p>
      <Buttons text='Say Hi' variant="contained" color="primary" handleClick={() => sayHi()} />
    </div>
+   <div  onFocus={() => console.log('focused')} onBlur={() => console.log('blurred')}>Hello</div>
    </>
   )
 }
