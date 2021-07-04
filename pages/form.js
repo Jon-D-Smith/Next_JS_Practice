@@ -8,17 +8,21 @@ import styles from '../styles/Form.module.css'
 
 const Form = () => {
     const [adjective, setAdjective] = useState('')
+    const [noun, setNoun] = useState('')
     const [story, setStory] = useState('')
     const [isVisible, setIsVisible] = useState(false)
     const [choice, setChoice] = useState(1)
     const stories = [
-        `There once was a boy with a ${adjective} balloon`,
-        `A ${adjective} frisbee came to life`,
-        `There once was pop star with ${adjective} hair`
+        `There once was a ${noun} with a ${adjective} balloon`,
+        `A ${adjective} ${noun} came to life`,
+        `There once was pop star with ${adjective} ${noun}`
     ]
 
     const handleAdjectiveChange =(e) => {
         setAdjective(e.target.value)
+    }
+    const handleNounChange =(e) => {
+        setNoun(e.target.value)
     }
 
     const handleChoiceChange = (e) => {
@@ -35,6 +39,8 @@ const Form = () => {
     <form noValidate autoComplete="off" onSubmit={handleSubmit} className={styles.container}>
     <InputLabel id="adjective-select" >Adjective</InputLabel>
       <TextField labelId="adjective-select" label="Adjective" variant="filled" name="adjective"  value={adjective} onChange={handleAdjectiveChange} className={styles.input1}/>
+      <InputLabel id="Noun-select" >Noun</InputLabel>
+      <TextField labelId="Noun-select" label="Noun" variant="filled" name="noun"  value={noun} onChange={handleNounChange} className={styles.input1}/>
       <InputLabel id="choice-select" >Story</InputLabel>
       <Select
           labelId="choice-select"
