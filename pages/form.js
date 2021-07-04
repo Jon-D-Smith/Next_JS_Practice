@@ -57,7 +57,7 @@ const Form = () => {
       <br />
       <Buttons text='Generate Story' variant="contained" color="primary" className={styles.inputButton} handleClick={handleSubmit} />
     </form>
-    <div>
+    <div className={styles.story}>
         <h1>Your story:</h1>
     {isVisible && <p className={styles.red}>{story}</p>}
     </div>
